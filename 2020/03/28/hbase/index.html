@@ -5,18 +5,19 @@
   
 
   
-  <title>hbase | Hexo</title>
+  <title>HBase表设计 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HBase表设计hbase表设计要考虑以下因素1. rowkey设计rowkey设计原则： rowkey不要过长 rowkey尽量前缀随机，避免热region问题，小数据量时，rowkey集中在某些region可以提高查询效率 rowkey要用主要的查询字段组成 rowkey可以考虑将string转byte来存储，进而节省空间  2. 列簇设计 一般要有区分度 不要创建过多的列簇  3. 列设计">
+  <meta name="description" content="hbase表设计要考虑以下因素1. rowkey设计rowkey设计原则： rowkey不要过长 rowkey尽量前缀随机，避免热region问题，小数据量时，rowkey集中在某些region可以提高查询效率 rowkey要用主要的查询字段组成 rowkey可以考虑将string转byte来存储，进而节省空间  2. 列簇设计 一般要有区分度 不要创建过多的列簇  3. 列设计 同一列，同样的r">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hbase">
+<meta property="og:title" content="HBase表设计">
 <meta property="og:url" content="http://yoursite.com/2020/03/28/hbase/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="HBase表设计hbase表设计要考虑以下因素1. rowkey设计rowkey设计原则： rowkey不要过长 rowkey尽量前缀随机，避免热region问题，小数据量时，rowkey集中在某些region可以提高查询效率 rowkey要用主要的查询字段组成 rowkey可以考虑将string转byte来存储，进而节省空间  2. 列簇设计 一般要有区分度 不要创建过多的列簇  3. 列设计">
+<meta property="og:description" content="hbase表设计要考虑以下因素1. rowkey设计rowkey设计原则： rowkey不要过长 rowkey尽量前缀随机，避免热region问题，小数据量时，rowkey集中在某些region可以提高查询效率 rowkey要用主要的查询字段组成 rowkey可以考虑将string转byte来存储，进而节省空间  2. 列簇设计 一般要有区分度 不要创建过多的列簇  3. 列设计 同一列，同样的r">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-28T09:43:56.612Z">
-<meta property="article:modified_time" content="2020-03-28T09:43:56.612Z">
+<meta property="article:published_time" content="2020-03-28T09:52:45.420Z">
+<meta property="article:modified_time" content="2020-03-28T09:57:14.136Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="HBase,表设计">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -69,9 +70,13 @@
         <section id="main"><article id="post-hbase" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/28/hbase/" class="article-date">
-  <time datetime="2020-03-28T09:43:56.612Z" itemprop="datePublished">2020-03-28</time>
+  <time datetime="2020-03-28T09:52:45.420Z" itemprop="datePublished">2020-03-28</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HBase/">HBase</a>►<a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -80,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hbase
+      HBase表设计
     </h1>
   
 
@@ -88,7 +93,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HBase表设计"><a href="#HBase表设计" class="headerlink" title="HBase表设计"></a>HBase表设计</h2><h3 id="hbase表设计要考虑以下因素"><a href="#hbase表设计要考虑以下因素" class="headerlink" title="hbase表设计要考虑以下因素"></a>hbase表设计要考虑以下因素</h3><h4 id="1-rowkey设计"><a href="#1-rowkey设计" class="headerlink" title="1. rowkey设计"></a>1. rowkey设计</h4><h5 id="rowkey设计原则："><a href="#rowkey设计原则：" class="headerlink" title="rowkey设计原则："></a>rowkey设计原则：</h5><ul>
+        <h3 id="hbase表设计要考虑以下因素"><a href="#hbase表设计要考虑以下因素" class="headerlink" title="hbase表设计要考虑以下因素"></a>hbase表设计要考虑以下因素</h3><h4 id="1-rowkey设计"><a href="#1-rowkey设计" class="headerlink" title="1. rowkey设计"></a>1. rowkey设计</h4><h5 id="rowkey设计原则："><a href="#rowkey设计原则：" class="headerlink" title="rowkey设计原则："></a>rowkey设计原则：</h5><ul>
 <li>rowkey不要过长</li>
 <li>rowkey尽量前缀随机，避免热region问题，小数据量时，rowkey集中在某些region可以提高查询效率</li>
 <li>rowkey要用主要的查询字段组成</li>
@@ -127,6 +132,8 @@
       <a data-url="http://yoursite.com/2020/03/28/hbase/" data-id="ck8bfgu6m00002sxk1n2nb9rx" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HBase-%E8%A1%A8%E8%AE%BE%E8%AE%A1/" rel="tag">HBase,表设计</a></li></ul>
+
     </footer>
   </div>
   
@@ -149,12 +156,33 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HBase/">HBase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase-%E8%A1%A8%E8%AE%BE%E8%AE%A1/" rel="tag">HBase,表设计</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HBase-%E8%A1%A8%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">HBase,表设计</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -173,7 +201,7 @@
       <ul>
         
           <li>
-            <a href="/2020/03/28/hbase/">hbase</a>
+            <a href="/2020/03/28/hbase/">HBase表设计</a>
           </li>
         
           <li>
