@@ -12,7 +12,7 @@
 
 
 
-<title>openvpn_vs_ipsec | Damon&#39;s Blog</title>
+<title>hadoop | Damon&#39;s Blog</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">openvpn_vs_ipsec</h1>
+            <h1 class="post-title">hadoop</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">August 6, 2020&nbsp;&nbsp;19:32:33</a>
+                        Date: <a href="#">August 6, 2020&nbsp;&nbsp;19:23:00</a>
                         </span>
                     
                     
@@ -191,40 +191,12 @@
         </header>
 
         <div class="post-content">
-            <h2 id="VPN方案对比"><a href="#VPN方案对比" class="headerlink" title="VPN方案对比"></a>VPN方案对比</h2><h4 id="IPSecVPN"><a href="#IPSecVPN" class="headerlink" title="IPSecVPN"></a>IPSecVPN</h4><ul>
-<li>优点<ul>
-<li>适用于几乎所有的设备和系统</li>
-<li>搭建简单</li>
-<li>高水平的安全</li>
-<li>支持多线程来提升性能</li>
+            <h2 id="搭建hadoop集群"><a href="#搭建hadoop集群" class="headerlink" title="搭建hadoop集群"></a>搭建hadoop集群</h2><p>将要搭建的hadoop集群主要用于学习目的，所有采用了基于docker容器的部署方式，这样部署比较简单，可以快速启动一个hadoop集群用于学习。</p>
+<h3 id="基于docker的hadoop集群搭建"><a href="#基于docker的hadoop集群搭建" class="headerlink" title="基于docker的hadoop集群搭建"></a>基于docker的hadoop集群搭建</h3><h4 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h4><ul>
+<li>centos虚拟机</li>
 </ul>
-</li>
-<li>缺点<ul>
-<li>容易被防火墙block（只能绑定500端口）</li>
-<li>速度比较慢（需要两次封装）</li>
-</ul>
-</li>
-</ul>
-<h4 id="OpenVPN"><a href="#OpenVPN" class="headerlink" title="OpenVPN"></a>OpenVPN</h4><ul>
-<li>优点<ul>
-<li>协议可以绕过大部分防火墙</li>
-<li>开源</li>
-<li>有非常高的安全性</li>
-<li>可定义配置和优化</li>
-<li>速度比较快</li>
-<li>稳定，官方文档比较完善</li>
-<li>支持水平扩展，负载均衡</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>搭建比较复杂</li>
-<li>依赖第三方的客户端</li>
-</ul>
-</li>
-</ul>
-<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>综上，目前比较推荐OpenVPN方案</p>
-<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><h5 id="部署文档"><a href="#部署文档" class="headerlink" title="部署文档"></a>部署文档</h5><p><a href="https://github.com/angristan/openvpn-install" target="_blank" rel="noopener">https://github.com/angristan/openvpn-install</a><br><a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md" target="_blank" rel="noopener">https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md</a></p>
-<h5 id="VPN方案对比参考"><a href="#VPN方案对比参考" class="headerlink" title="VPN方案对比参考"></a>VPN方案对比参考</h5><p><a href="https://www.giganews.com/vyprvpn/compare-vpn-protocols.html" target="_blank" rel="noopener">https://www.giganews.com/vyprvpn/compare-vpn-protocols.html</a><br><a href="https://thebestvpn.com/pptp-l2tp-openvpn-sstp-ikev2-protocols/" target="_blank" rel="noopener">https://thebestvpn.com/pptp-l2tp-openvpn-sstp-ikev2-protocols/</a><br><a href="https://www.howtogeek.com/211329/which-is-the-best-vpn-protocol-pptp-vs.-openvpn-vs.-l2tpipsec-vs.-sstp/" target="_blank" rel="noopener">https://www.howtogeek.com/211329/which-is-the-best-vpn-protocol-pptp-vs.-openvpn-vs.-l2tpipsec-vs.-sstp/</a><br><a href="https://www.reddit.com/r/VPN/comments/7t9u59/openvpn_vs_ipsec/" target="_blank" rel="noopener">https://www.reddit.com/r/VPN/comments/7t9u59/openvpn_vs_ipsec/</a>  </p>
+<h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">yum makecache fast</span><br><span class="line">yum install -y docker-ce-17.06.2.ce-1.el7.centos.x86_64</span><br><span class="line">cat &gt; /etc/systemd/system/docker.service&lt;&lt;EOF</span><br><span class="line">[Unit]</span><br><span class="line">Description=Docker Application Container Engine</span><br><span class="line">Documentation=http://docs.docker.io</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=<span class="string">"PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin"</span></span><br><span class="line">ExecStart=/usr/bin/dockerd --<span class="built_in">log</span>-level=error \</span><br><span class="line">--graph=/app/docker/data \</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=5</span><br><span class="line">LimitNOFILE=infinity</span><br><span class="line">LimitNPROC=infinity</span><br><span class="line">LimitCORE=infinity</span><br><span class="line">Delegate=yes</span><br><span class="line">KillMode=process</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<h4 id="搭建hadoop集群-1"><a href="#搭建hadoop集群-1" class="headerlink" title="搭建hadoop集群"></a>搭建hadoop集群</h4><p>主要参考了如下文章进行搭建：<br><a href="https://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/" target="_blank" rel="noopener">https://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/</a></p>
 
         </div>
 
@@ -239,7 +211,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://damonww.github.io/2020/08/06/openvpn_vs_ipsec/">https://damonww.github.io/2020/08/06/openvpn_vs_ipsec/</a></span>
+                        <span><a href="https://damonww.github.io/2020/08/06/hadoop/">https://damonww.github.io/2020/08/06/hadoop/</a></span>
                     </p>
                 
                 
@@ -262,8 +234,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2020/08/06/openvpn_vs_ipsec/">openvpn_vs_ipsec</a>
             
-            <a class="next" rel="next" href="/2020/08/06/hadoop/">hadoop</a>
+            
+            <a class="next" rel="next" href="/2020/07/24/datax/">datax</a>
             
         </section>
 
